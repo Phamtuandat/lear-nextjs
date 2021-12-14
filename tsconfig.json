@@ -29,8 +29,8 @@
             "@/styles/*": [
                 "./styles/*"
             ],
-            "@/hook/*": [
-                "./hook/*"
+            "@/hook": [
+                "./hook"
             ],
         }
     },

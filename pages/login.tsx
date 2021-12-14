@@ -1,43 +1,44 @@
-import { Button, Stack } from '@mui/material'
+import { Button, CircularProgress, Stack } from '@mui/material'
+import { Box } from '@mui/system'
 import { authApi } from 'axiosClients'
+import { useAuth } from 'hooks'
 import React from 'react'
 export default function LoginPage() {
+    const { error, isValidating, login, logout, profile } = useAuth({
+        revalidateOnMount: false,
+    })
     const handleLogin = async () => {
         try {
-            await authApi.login({
-                username: 'phamdat',
-                password: 'phamdat11',
-            })
+            await login()
+            console.log('profile page')
         } catch (error) {
             console.log('something went wrong')
         }
     }
     const handleLogout = async () => {
         try {
-            await authApi.logout()
+            await logout()
+            console.log('redirect to login page')
         } catch (error) {
             console.log("something went wrong, can't logout")
         }
     }
-    const handleGetProfile = async () => {
-        try {
-            const data: any = await authApi.getProfile()
-        } catch (error) {
-            console.log("can't get your profile, try again later")
-        }
-    }
+
     return (
         <div>
             <h1>Login Page</h1>
+            {isValidating ? (
+                <CircularProgress size={18} />
+            ) : (
+                <Box>{JSON.stringify(profile || {}, null, '')}</Box>
+            )}
+
             <Stack spacing={1} direction="row">
                 <Button onClick={handleLogin} variant="contained">
                     Login
                 </Button>
                 <Button onClick={handleLogout} variant="contained">
                     Logout
-                </Button>
-                <Button onClick={handleGetProfile} variant="contained">
-                    Get profile
                 </Button>
             </Stack>
         </div>
