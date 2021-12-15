@@ -1,6 +1,7 @@
 import { LayoutProp } from '@/models'
 import Link from 'next/link'
 import * as React from 'react'
+import { Auth } from '../common'
 
 export interface MainLayoutProps {}
 
@@ -11,11 +12,11 @@ export function MainLayout({ children }: LayoutProp) {
             <Link href="/">
                 <a>Home</a>
             </Link>
-            <div>
-                <Link href="./about">
-                    <a>about</a>
+            <Auth>
+                <Link href="./dashboard">
+                    <a>dashboard</a>
                 </Link>
-            </div>
+            </Auth>
             <div>{children}</div>
         </>
     )

@@ -1,16 +1,17 @@
 import { Button, CircularProgress, Stack } from '@mui/material'
 import { Box } from '@mui/system'
-import { authApi } from 'axiosClients'
 import { useAuth } from 'hooks'
+import { useRouter } from 'next/router'
 import React from 'react'
 export default function LoginPage() {
     const { error, isValidating, login, logout, profile } = useAuth({
         revalidateOnMount: false,
     })
+    const router = useRouter()
     const handleLogin = async () => {
         try {
             await login()
-            console.log('profile page')
+            router.push('/dashboard')
         } catch (error) {
             console.log('something went wrong')
         }
@@ -18,7 +19,7 @@ export default function LoginPage() {
     const handleLogout = async () => {
         try {
             await logout()
-            console.log('redirect to login page')
+            router.push('/')
         } catch (error) {
             console.log("something went wrong, can't logout")
         }
