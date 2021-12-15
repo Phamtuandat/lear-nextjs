@@ -32,6 +32,9 @@
             "@/hook": [
                 "./hook"
             ],
+            "@/utils": [
+                "./Ultils"
+            ]
         }
     },
     "include": [
