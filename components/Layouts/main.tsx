@@ -1,27 +1,23 @@
 import { LayoutProp } from '@/models'
-import { Button } from '@mui/material'
+import { Stack } from '@mui/material'
+import { Box } from '@mui/system'
 import { useAuth } from 'hooks'
 import Link from 'next/link'
 import * as React from 'react'
-import { Auth } from '../common'
+import { Footer, Header } from '../common'
 
 export interface MainLayoutProps {}
 
 export function MainLayout({ children }: LayoutProp) {
     const { profile, isValidating, logout } = useAuth()
     return (
-        <>
-            <h1>Main Layout</h1>
-            <Link href="/">
-                <a>Home</a>
-            </Link>
-            {(profile as any)?.username ? (
-                <Link href="./dashboard">
-                    <a>dashboard</a>
-                </Link>
-            ) : null}
+        <Stack minHeight={'100vh'}>
+            <Header />
+            <Box className="main" flexGrow={1}>
+                <Box>{children}</Box>
+            </Box>
 
-            <div>{children}</div>
-        </>
+            <Footer />
+        </Stack>
     )
 }

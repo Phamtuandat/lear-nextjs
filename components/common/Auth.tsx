@@ -5,7 +5,6 @@ import React, { useEffect } from 'react'
 
 export function Auth({ children }: any) {
     const { profile, error, isValidating } = useAuth()
-    console.log(isValidating)
     const router = useRouter()
     useEffect(() => {
         if (!isValidating && !(profile as any)?.username) router.push('/login')

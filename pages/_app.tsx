@@ -1,6 +1,6 @@
 import { EmptyLayout } from '@/components/Layouts'
-import { CacheProvider, ThemeProvider } from '@emotion/react'
-import { CssBaseline } from '@mui/material'
+import { CacheProvider } from '@emotion/react'
+import { CssBaseline, ThemeProvider } from '@mui/material'
 import apiClient from 'axiosClients/apiClient'
 import Head from 'next/head'
 import { SWRConfig } from 'swr'
@@ -22,17 +22,15 @@ function MyApp({
                 <title>My page</title>
                 <meta name="viewport" content="initial-scale=1, width=device-width" />
             </Head>
-            <ThemeProvider theme={theme}>
-                {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-                <CssBaseline />
-                <SWRConfig
-                    value={{ fetcher: (url) => apiClient.get(url), shouldRetryOnError: false }}
-                >
+            <SWRConfig value={{ fetcher: (url) => apiClient.get(url), shouldRetryOnError: false }}>
+                <ThemeProvider theme={theme}>
+                    {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+                    <CssBaseline />
                     <Layout>
                         <Component {...pageProps} />
                     </Layout>
-                </SWRConfig>
-            </ThemeProvider>
+                </ThemeProvider>
+            </SWRConfig>
         </CacheProvider>
     )
 }
