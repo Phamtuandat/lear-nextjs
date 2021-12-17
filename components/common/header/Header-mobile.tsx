@@ -24,9 +24,9 @@ export function HeaderMobile(props: HeaderMobileProp) {
                 <Box sx={{ position: 'relative' }}>
                     <List sx={{ width: '275px', py: 4 }}>
                         {ROUTE_LIST.map((x) => (
-                            <>
-                                <ListItem key={x.path} onClick={handleClose}>
-                                    <Link href={x.path} passHref>
+                            <Box key={x.path}>
+                                <Link href={x.path} passHref>
+                                    <ListItem key={x.path} onClick={handleClose}>
                                         <MuiLink
                                             sx={{ fontSize: '20px', py: 1 }}
                                             className={clsx({
@@ -35,10 +35,10 @@ export function HeaderMobile(props: HeaderMobileProp) {
                                         >
                                             {x.label}
                                         </MuiLink>
-                                    </Link>
-                                </ListItem>
+                                    </ListItem>
+                                </Link>
                                 <Divider />
-                            </>
+                            </Box>
                         ))}
                     </List>
                     <IconButton

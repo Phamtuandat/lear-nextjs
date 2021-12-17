@@ -19,7 +19,7 @@ export function HeaderDesktop(props: HeaderDesktopProp) {
                         <Link href={x.path} key={i} passHref>
                             <MuiLink
                                 sx={{
-                                    fontWeight: '500',
+                                    fontWeight: 'medium',
                                     fontSize: '20px',
                                     mx: '15px',
                                     lineHeight: '29px',
