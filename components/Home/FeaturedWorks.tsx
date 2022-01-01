@@ -1,4 +1,4 @@
-import { Container, Stack, Typography } from '@mui/material'
+import { Container, Divider, Stack, Typography } from '@mui/material'
 import React from 'react'
 import { Work } from './Work'
 
@@ -10,8 +10,13 @@ export function FeaturedWorks(props: FeaturedWorksProps) {
             <Typography mb={1.2} variant="h5" height="60px" lineHeight="60px">
                 Featured works
             </Typography>
-            <Stack>
+            <Stack spacing={4}>
                 <Work />
+                <Divider light={true} />
+                <Work />
+                <Divider light={true} />
+                <Work />
+                <Divider light={true} />
             </Stack>
         </Container>
     )

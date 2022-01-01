@@ -38,7 +38,7 @@ export let theme = createTheme({
                 },
                 root: {
                     '@media (min-width: 600px)': {
-                        padding: '0',
+                        padding: '14px',
                     },
                 },
             },
