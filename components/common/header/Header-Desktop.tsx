@@ -1,16 +1,20 @@
-import { Container, Stack, Link as MuiLink } from '@mui/material'
-import { Box } from '@mui/system'
+import { Container, Stack, Link as MuiLink, Button, IconButton } from '@mui/material'
+import { Box, useTheme } from '@mui/system'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import * as React from 'react'
+import React, { useContext } from 'react'
 import { ROUTE_LIST } from './router'
 import clsx from 'clsx'
+import { ColorModeContext } from 'Utils/themeContext'
+import Brightness4Icon from '@mui/icons-material/Brightness4'
+import Brightness7Icon from '@mui/icons-material/Brightness7'
 
 export interface HeaderDesktopProp {}
 
 export function HeaderDesktop(props: HeaderDesktopProp) {
     const router = useRouter()
-
+    const theme = useTheme()
+    const colorMode = useContext(ColorModeContext)
     return (
         <Box display={{ xs: 'none', md: 'block' }} py={2}>
             <Container>
@@ -22,7 +26,8 @@ export function HeaderDesktop(props: HeaderDesktopProp) {
                                     fontWeight: 'medium',
                                     fontSize: '20px',
                                     mx: '15px',
-                                    lineHeight: '29px',
+                                    color: 'text.primary',
+                                    lineHeight: '40px',
                                 }}
                                 className={clsx({ isActive: router.pathname === x.path })}
                             >
@@ -30,6 +35,10 @@ export function HeaderDesktop(props: HeaderDesktopProp) {
                             </MuiLink>
                         </Link>
                     ))}
+
+                    <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
+                        {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+                    </IconButton>
                 </Stack>
             </Container>
         </Box>
