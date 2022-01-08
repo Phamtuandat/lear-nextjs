@@ -27,7 +27,7 @@ export function HeroSession(props: HeroSessionProps) {
                         Velit officia consequat duis enim velit mollit. Exercitation veniam
                         consequat sunt nostrud amet.
                     </Typography>
-                    <Button variant="contained" size="large" sx={{ color: 'white' }}>
+                    <Button variant="contained" size="large" sx={{ color: 'text.main' }}>
                         Download Resume
                     </Button>
                 </Box>

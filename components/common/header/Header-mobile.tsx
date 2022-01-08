@@ -47,7 +47,7 @@ export function HeaderMobile(props: HeaderMobileProp) {
                                 <Link href={x.path} passHref>
                                     <ListItem key={x.path} onClick={handleClose}>
                                         <MuiLink
-                                            sx={{ fontSize: '20px', py: 1 }}
+                                            sx={{ fontSize: '20px', py: 1, color: 'text.primary' }}
                                             className={clsx({
                                                 isActive: x.path === router.pathname,
                                             })}
