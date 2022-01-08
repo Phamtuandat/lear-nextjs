@@ -1,7 +1,9 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles'
 import { red } from '@mui/material/colors'
+import { Theme } from '@mui/system'
 
 // Create a theme instance.
+
 export let theme = createTheme({
     palette: {
         primary: {

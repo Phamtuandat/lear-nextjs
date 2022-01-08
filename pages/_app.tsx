@@ -4,7 +4,7 @@ import { createTheme, CssBaseline, responsiveFontSizes, ThemeProvider } from '@m
 import { grey, red } from '@mui/material/colors'
 import apiClient from 'axiosClients/apiClient'
 import Head from 'next/head'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { SWRConfig } from 'swr'
 import { createEmotionCache, theme } from 'Utils'
 import { ColorModeContext } from 'Utils/themeContext'
@@ -24,10 +24,15 @@ function MyApp({
         () => ({
             toggleColorMode: () => {
                 setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'))
+                localStorage.setItem('UiMode', mode === 'light' ? 'dark' : 'light')
             },
         }),
-        []
+        [mode]
     )
+    useEffect(() => {
+        const defaultMode = localStorage.getItem('UiMode') as 'light' | 'dark'
+        setMode(defaultMode ? defaultMode : mode)
+    }, [mode])
 
     let themeCustom = useMemo(
         () =>
